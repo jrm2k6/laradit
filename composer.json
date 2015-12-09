@@ -1,0 +1,28 @@
+{
+    "name": "jrm2k6/laradit",
+    "description": "Reddit API Wrapper for Laravel",
+    "keywords": ["laravel", "reddit", "api"],
+    "homepage": "https://github.com/jrm2k6/laradit",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Dagorn",
+            "email": "jeremy.dagorn@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "laravel/framework": ">=5.0",
+        "phpunit/phpunit": "4.*",
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "JD\\Laradit": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
