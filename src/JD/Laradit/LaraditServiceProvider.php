@@ -1,6 +1,7 @@
 <?php namespace JD\Laradit;
 
 use Illuminate\Support\ServiceProvider;
+use JD\Laradit\Facades\Laradit;
 
 class LaraditServiceProvider extends ServiceProvider {
 
