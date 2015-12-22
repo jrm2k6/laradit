@@ -3,11 +3,13 @@
 use Illuminate\Config\Repository;
 use JD\Laradit\Auth\Credentials;
 use JD\Laradit\Auth\OAuth2;
+use JD\Laradit\Auth\ScriptAuth;
 use JD\Laradit\Auth\UrlProvider;
 
 class LaraditWrapper {
 
     protected $oauthManager;
+    protected $scriptAuth;
     protected $credentials;
 
     /**
@@ -28,10 +30,11 @@ class LaraditWrapper {
         $urlProvider = new UrlProvider($config->get('laradit.oauth_redirect_uri'));
 
         $this->oauthManager = new OAuth2($this->credentials, $urlProvider);
+        $this->scriptAuth = new ScriptAuth($this->credentials, $urlProvider);
     }
 
-    public function getSecret()
+    public function getScriptAuthManager()
     {
-        return $this->credentials->getClientSecret();
+        return $this->scriptAuth;
     }
 }
