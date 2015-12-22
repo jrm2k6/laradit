@@ -19,8 +19,8 @@ class LaraditWrapper {
     public function __construct(Repository $config)
     {
         $this->credentials = new Credentials(
-            $config->get('laradit.oauth_client_id'),
-            $config->get('laradit.oauth_client_secret'),
+            $config->get('laradit.client_id'),
+            $config->get('laradit.client_secret'),
             $config->get('laradit.reddit_username'),
             $config->get('laradit.reddit_password')
         );
