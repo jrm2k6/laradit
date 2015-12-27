@@ -1,6 +1,5 @@
 <?php namespace JD\Laradit\Resources;
 
-use GuzzleHttp\Client;
 use JD\Laradit\Helpers\APIRequestHelper;
 
 class UserResource
@@ -14,14 +13,25 @@ class UserResource
 
     public function getMe()
     {
-        $requestAttributes = APIRequestHelper::getRequestAttributes('me', $this->authToken);
+        $res = APIRequestHelper::getRequest('me', $this->authToken);
+        return APIRequestHelper::getJsonResponse($res);
+    }
 
-        $client = new Client();
-        $res = $client->request('GET',
-            $requestAttributes['url'],
-            $requestAttributes['headers']
-        );
+    public function getKarma()
+    {
+        $res = APIRequestHelper::getRequest('karma', $this->authToken);
+        return APIRequestHelper::getJsonResponse($res);
+    }
 
+    public function getPrefs()
+    {
+        $res = APIRequestHelper::getRequest('prefs', $this->authToken);
+        return APIRequestHelper::getJsonResponse($res);
+    }
+
+    public function getTrophies()
+    {
+        $res = APIRequestHelper::getRequest('trophies', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 }
