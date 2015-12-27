@@ -18,8 +18,8 @@ class UserResource
 
         $client = new Client();
         $res = $client->request('GET',
-            $requestAttributes->url,
-            $requestAttributes->headers
+            $requestAttributes['url'],
+            $requestAttributes['headers']
         );
 
         return $res;
