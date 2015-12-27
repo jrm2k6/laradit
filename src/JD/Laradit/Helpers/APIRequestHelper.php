@@ -7,7 +7,7 @@ class APIRequestHelper
     public static function getRequestAttributes($url, $token)
     {
         return [
-            'url' => 'https://oauth.reddit.com/api/v1/'.$url,
+            'url' => 'https://oauth.reddit.com/'.$url,
             'headers' => [
                 'headers' => [
                     'User-Agent' => 'my user agent',

@@ -13,25 +13,31 @@ class UserResource
 
     public function getMe()
     {
-        $res = APIRequestHelper::getRequest('me', $this->authToken);
+        $res = APIRequestHelper::getRequest('api/v1/me', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getKarma()
     {
-        $res = APIRequestHelper::getRequest('karma', $this->authToken);
+        $res = APIRequestHelper::getRequest('api/v1/karma', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getPrefs()
     {
-        $res = APIRequestHelper::getRequest('prefs', $this->authToken);
+        $res = APIRequestHelper::getRequest('api/v1/prefs', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getTrophies()
     {
-        $res = APIRequestHelper::getRequest('trophies', $this->authToken);
+        $res = APIRequestHelper::getRequest('api/v1/trophies', $this->authToken);
+        return APIRequestHelper::getJsonResponse($res);
+    }
+
+    public function getMySubreddits()
+    {
+        $res = APIRequestHelper::getRequest('subreddits/mine/subscriber', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 }
