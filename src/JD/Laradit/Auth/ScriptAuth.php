@@ -13,7 +13,7 @@ class ScriptAuth
         $this->urlProvider = $urlProvider;
     }
 
-    public function getRequestToken()
+    public function getAccessToken()
     {
         $client = new Client();
         $res = $client->request('POST',
@@ -24,9 +24,17 @@ class ScriptAuth
                     'grant_type' => 'password',
                     'username' => $this->credentials->getClientUsername(),
                     'password' => $this->credentials->getClientPassword()
-            ]
-        ]);
+                ]
+            ]);
 
-        return $res;
+        if ($res->getStatusCode() == 200) {
+            $content = $res->getBody()->getContents();
+            $jsonContent = json_decode($content, true);
+            $token = $jsonContent['access_token'];
+
+            return $token;
+        }
+
+        return null;
     }
 }
