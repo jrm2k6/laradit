@@ -1,7 +1,7 @@
 <?php namespace JD\Laradit\Resources;
 
-use JD\Laradit\Helpers\APIRequestBuilder;
 use GuzzleHttp\Client;
+use JD\Laradit\Helpers\APIRequestHelper;
 
 class UserResource
 {
@@ -14,7 +14,7 @@ class UserResource
 
     public function getMe()
     {
-        $requestAttributes = APIRequestBuilder::getRequestAttributes('me', $this->authToken);
+        $requestAttributes = APIRequestHelper::getRequestAttributes('me', $this->authToken);
 
         $client = new Client();
         $res = $client->request('GET',
@@ -22,6 +22,6 @@ class UserResource
             $requestAttributes['headers']
         );
 
-        return $res;
+        return APIRequestHelper::getJsonResponse($res);
     }
 }
