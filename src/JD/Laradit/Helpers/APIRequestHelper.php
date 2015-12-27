@@ -1,5 +1,6 @@
 <?php namespace JD\Laradit\Helpers;
 use GuzzleHttp;
+use GuzzleHttp\Client;
 
 class APIRequestHelper
 {
@@ -23,5 +24,18 @@ class APIRequestHelper
         }
 
         return [];
+    }
+
+    public static function getRequest($url, $token)
+    {
+        $requestAttributes = APIRequestHelper::getRequestAttributes($url, $token);
+
+        $client = new Client();
+        $res = $client->request('GET',
+            $requestAttributes['url'],
+            $requestAttributes['headers']
+        );
+
+        return $res;
     }
 }
