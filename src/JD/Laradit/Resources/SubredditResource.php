@@ -27,13 +27,13 @@ class SubredditResource
 
     public function searchSubredditsByName($substring)
     {
-        $res = APIRequestHelper::createPostRequest('api/search_reddit_names/', $this->authToken, ['query' => $substring]);
+        $res = APIRequestHelper::createPostRequest('api/search_reddit_names', $this->authToken, ['query' => $substring]);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function searchSubredditsByTopic($topic)
     {
-        $res = APIRequestHelper::createGetRequest('api/subreddits_by_topic/', $this->authToken, ['query' => $topic]);
+        $res = APIRequestHelper::createGetRequest('api/subreddits_by_topic?query='.$topic, $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
