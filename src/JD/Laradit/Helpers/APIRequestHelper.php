@@ -45,12 +45,12 @@ class APIRequestHelper
         return $res;
     }
 
-    public static function createGetRequest($url, $token, $data)
+    public static function createGetRequest($url, $token, $data = null)
     {
-        return self::createRequest('GET', $url, $token, $data);
+        return self::createRequest('GET', $url, $token);
     }
 
-    public static function createPostRequest($url, $token, $data)
+    public static function createPostRequest($url, $token, $data = null)
     {
         return self::createRequest('POST', $url, $token, $data);
     }
