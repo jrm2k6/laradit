@@ -1,6 +1,7 @@
 <?php namespace JD\Laradit;
 
 
+use JD\Laradit\Resources\ListingResource;
 use JD\Laradit\Resources\SubredditResource;
 use JD\Laradit\Resources\UserResource;
 
@@ -21,5 +22,10 @@ class LaraditResourceManager
     public function getSubredditResource()
     {
         return new SubredditResource($this->authToken);
+    }
+
+    public function getListingsResource()
+    {
+        return new ListingResource($this->authToken);
     }
 }
