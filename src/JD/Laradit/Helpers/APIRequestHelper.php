@@ -4,16 +4,22 @@ use GuzzleHttp\Client;
 
 class APIRequestHelper
 {
-    public static function getRequestAttributes($url, $token)
+    public static function getRequestAttributes($url, $token, $data)
     {
+        $properties = [
+            'headers' => [
+                'User-Agent' => 'my user agent',
+                'Authorization' => 'bearer '.$token
+            ]
+        ];
+
+        if ($data) {
+            $properties['form_params'] = $data;
+        }
+
         return [
             'url' => 'https://oauth.reddit.com/'.$url,
-            'headers' => [
-                'headers' => [
-                    'User-Agent' => 'my user agent',
-                    'Authorization' => 'bearer '.$token
-                ]
-            ]
+            'properties' => $properties
         ];
     }
 
@@ -26,16 +32,26 @@ class APIRequestHelper
         return [];
     }
 
-    public static function getRequest($url, $token)
+    private static function createRequest($type, $url, $token, $data = null)
     {
-        $requestAttributes = APIRequestHelper::getRequestAttributes($url, $token);
+        $requestAttributes = APIRequestHelper::getRequestAttributes($url, $token, $data);
 
         $client = new Client();
-        $res = $client->request('GET',
+        $res = $client->request($type,
             $requestAttributes['url'],
-            $requestAttributes['headers']
+            $requestAttributes['properties']
         );
 
         return $res;
+    }
+
+    public static function createGetRequest($url, $token, $data)
+    {
+        return self::createRequest('GET', $url, $token, $data);
+    }
+
+    public static function createPostRequest($url, $token, $data)
+    {
+        return self::createRequest('POST', $url, $token, $data);
     }
 }
