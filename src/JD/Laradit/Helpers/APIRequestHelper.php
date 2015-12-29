@@ -45,7 +45,7 @@ class APIRequestHelper
         return $res;
     }
 
-    public static function createGetRequest($url, $token, $data = null)
+    public static function createGetRequest($url, $token)
     {
         return self::createRequest('GET', $url, $token);
     }
