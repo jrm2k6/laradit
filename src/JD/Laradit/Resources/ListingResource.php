@@ -18,19 +18,19 @@ class ListingResource
         return APIRequestHelper::getJsonResponse($res);
     }
 
-    public function getHotLinks($subreddit_name)
+    public function getHotLinks($subreddit_name, $query_params = null)
     {
         $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/hot', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
-    public function getNewLinks($subreddit_name)
+    public function getNewLinks($subreddit_name, $query_params = null)
     {
         $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/new', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
-    public function getRandomLinks($subreddit_name)
+    public function getRandomLinks($subreddit_name, $query_params = null)
     {
         $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/random', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
