@@ -54,4 +54,16 @@ class APIRequestHelper
     {
         return self::createRequest('POST', $url, $token, $data);
     }
+
+    public static function extractParams($params)
+    {
+        $params = collect($params);
+        $params = $params->map(function($key, $val) {
+            return $val.'='.$key;
+        })->values();
+
+        $params = collect($params)->implode('&');
+
+        return $params;
+    }
 }

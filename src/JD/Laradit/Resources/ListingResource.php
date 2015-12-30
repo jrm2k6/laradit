@@ -14,25 +14,46 @@ class ListingResource
 
     public function getLinksById($names)
     {
-        $res = APIRequestHelper::createGetRequest('by_id', $this->authToken, ['query' => join(',', $names)]);
+        $res = APIRequestHelper::createGetRequest('by_id', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getHotLinks($subreddit_name, $query_params = null)
     {
-        $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/hot', $this->authToken);
+        $url = 'r/'.$subreddit_name.'/hot';
+
+        if ($query_params) {
+            $params = APIRequestHelper::extractParams($query_params);
+            $url = $url.'?'.$params;
+        }
+
+        $res = APIRequestHelper::createGetRequest($url, $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getNewLinks($subreddit_name, $query_params = null)
     {
-        $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/new', $this->authToken);
+        $url = 'r/'.$subreddit_name.'/new';
+
+        if ($query_params) {
+            $params = APIRequestHelper::extractParams($query_params);
+            $url = $url.'?'.$params;
+        }
+
+        $res = APIRequestHelper::createGetRequest($url, $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 
     public function getRandomLinks($subreddit_name, $query_params = null)
     {
-        $res = APIRequestHelper::createGetRequest('r/'.$subreddit_name.'/random', $this->authToken);
+        $url = 'r/'.$subreddit_name.'/random';
+
+        if ($query_params) {
+            $params = APIRequestHelper::extractParams($query_params);
+            $url = $url.'?'.$params;
+        }
+
+        $res = APIRequestHelper::createGetRequest($url, $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
     }
 }
