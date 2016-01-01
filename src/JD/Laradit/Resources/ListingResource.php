@@ -12,7 +12,7 @@ class ListingResource
         $this->authToken = $authToken;
     }
 
-    public function getLinksById($names)
+    public function getLinksById()
     {
         $res = APIRequestHelper::createGetRequest('by_id', $this->authToken);
         return APIRequestHelper::getJsonResponse($res);
