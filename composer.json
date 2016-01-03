@@ -24,6 +24,5 @@
         "psr-0": {
             "JD\\Laradit": "src/"
         }
-    },
-    "minimum-stability": "stable"
+    }
 }
