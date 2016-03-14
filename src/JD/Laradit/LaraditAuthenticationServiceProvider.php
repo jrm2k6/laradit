@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use JD\Laradit\Auth\Credentials;
+use JD\Laradit\Auth\OAuthCredentials;
 use JD\Laradit\Auth\UrlProvider;
 use JD\Laradit\Facades\Laradit;
 
@@ -35,6 +36,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     {
         $this->registerAliases();
         $this->registerCredentials();
+        $this->registerOAuthCredentials();
         $this->registerUrlProvider();
         $this->registerAuthProvider();
     }
@@ -58,6 +60,15 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
         });
     }
 
+    public function registerOAuthCredentials()
+    {
+        $this->app->singleton('jd.laradit.oauth_credentials', function($app) {
+            return new OAuthCredentials(
+                $app['config']->get('laradit.client_id')
+            );
+        });
+    }
+
     public function registerUrlProvider(){
         $this->app->singleton('jd.laradit.urlprovider', function($app) {
             return new UrlProvider(
@@ -71,6 +82,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
         $this->app->bind('jd.laradit.auth', function($app) {
             return new LaraditAuthenticationManager(
                 $app['jd.laradit.credentials'],
+                $app['jd.laradit.oauth_credentials'],
                 $app['jd.laradit.urlprovider']
             );
         });
