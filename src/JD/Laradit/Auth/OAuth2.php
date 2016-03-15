@@ -9,10 +9,9 @@ class OAuth2
     protected $urlProvider;
     protected $state;
 
-    public function __construct(OAuthCredentials $credentials, UrlProvider $urlProvider)
+    public function __construct(OAuthCredentials $credentials)
     {
         $this->credentials = $credentials;
-        $this->urlProvider = $urlProvider;
         $this->state = null;
     }
 
