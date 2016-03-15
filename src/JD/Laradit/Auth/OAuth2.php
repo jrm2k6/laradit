@@ -1,6 +1,5 @@
 <?php namespace JD\Laradit\Auth;
 
-use JD\Laradit\Helpers\APIRequestHelper;
 use JD\Laradit\Helpers\OAuthRedditHelper;
 
 class OAuth2
