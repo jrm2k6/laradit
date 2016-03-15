@@ -21,14 +21,8 @@ class OAuthRedditHelper
         $duration = ($isPermanent) ? 'permanent' : 'temporary';
 
         return [
-            'url' => $url."?client_id=${clientId}&response_type=${responseType}
-            &state=${state}&redirect_uri=${redirectUri}&duration=${duration}&scope=${scopesAsString}",
+            'url' => $url."?client_id=${clientId}&response_type=${responseType}&state=${state}&redirect_uri=${redirectUri}&duration=${duration}&scope=${scopesAsString}",
             'state' => $state
         ];
-    }
-
-    public static function authorize($url)
-    {
-        return redirect($url);
     }
 }
