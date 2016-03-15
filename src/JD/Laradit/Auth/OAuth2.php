@@ -15,17 +15,10 @@ class OAuth2
         $this->state = null;
     }
 
-    public function authorize()
+    public function getAuthorizationUrl()
     {
         $baseUrl = 'https://www.reddit.com/api/v1/authorize';
-        $urlAndState = OAuthRedditHelper::getAuthorizeUrlAndState($baseUrl, $this->credentials->getClientId(),
-            $this->credentials->getRedirectUri(), 'code', true, ['edit']);
-
-        $url = $urlAndState[0];
-        $this->state = $urlAndState[1];
-
-        return OAuthRedditHelper::authorize($url);
+        return OAuthRedditHelper::getAuthorizeUrlAndState($baseUrl, $this->credentials->getClientId(), 'code',
+            $this->credentials->getRedirectUri(), true, ['edit']);
     }
-
-
 }
