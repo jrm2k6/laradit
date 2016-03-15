@@ -51,12 +51,12 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     public function registerCredentials()
     {
         $this->app->singleton('jd.laradit.credentials', function($app) {
-           return new Credentials(
-               $app['config']->get('laradit.client_id'),
-               $app['config']->get('laradit.client_secret'),
-               $app['config']->get('laradit.reddit_username'),
-               $app['config']->get('laradit.reddit_password')
-           );
+            return new Credentials(
+                $app['config']->get('laradit.client_id'),
+                $app['config']->get('laradit.client_secret'),
+                $app['config']->get('laradit.reddit_username'),
+                $app['config']->get('laradit.reddit_password')
+            );
         });
     }
 
@@ -64,7 +64,8 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     {
         $this->app->singleton('jd.laradit.oauth_credentials', function($app) {
             return new OAuthCredentials(
-                $app['config']->get('laradit.client_id')
+                $app['config']->get('laradit.client_id'),
+                $app['config']->get('laradit.oauth_redirect_uri')
             );
         });
     }
@@ -72,7 +73,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     public function registerUrlProvider(){
         $this->app->singleton('jd.laradit.urlprovider', function($app) {
             return new UrlProvider(
-                $app['config']->get('laradit.oauth_redirect_uri')
+                $app['config']->get('laradit.laradit_oauth_redirect_uri')
             );
         });
     }
