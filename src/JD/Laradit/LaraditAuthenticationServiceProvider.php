@@ -65,6 +65,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
         $this->app->singleton('jd.laradit.oauth_credentials', function($app) {
             return new OAuthCredentials(
                 $app['config']->get('laradit.client_id'),
+                $app['config']->get('laradit.client_secret'),
                 $app['config']->get('laradit.oauth_redirect_uri')
             );
         });
