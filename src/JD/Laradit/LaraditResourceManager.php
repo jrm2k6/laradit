@@ -3,6 +3,7 @@
 
 use JD\Laradit\Resources\ListingResource;
 use JD\Laradit\Resources\OAuth2AccountResource;
+use JD\Laradit\Resources\OAuth2LinksResource;
 use JD\Laradit\Resources\SubredditResource;
 use JD\Laradit\Resources\UserResource;
 
@@ -39,5 +40,10 @@ class LaraditResourceManager
     public function getAccountResource()
     {
         return new OAuth2AccountResource($this->accessToken);
+    }
+
+    public function getLinksResource()
+    {
+        return new OAuth2LinksResource($this->accessToken);
     }
 }
