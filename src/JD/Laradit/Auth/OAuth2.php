@@ -15,11 +15,11 @@ class OAuth2
         $this->state = null;
     }
 
-    public function getAuthorizationUrl()
+    public function getAuthorizationUrl($scopes = [])
     {
         $baseUrl = 'https://www.reddit.com/api/v1/authorize';
         return OAuthRedditHelper::getAuthorizeUrlAndState($baseUrl, $this->credentials->getClientId(), 'code',
-            $this->credentials->getRedirectUri(), true, ['edit']);
+            $this->credentials->getRedirectUri(), true, $scopes);
     }
 
     public function getAccessAndRefreshToken($code)
