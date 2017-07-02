@@ -36,7 +36,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     {
         $this->registerAliases();
         $this->registerCredentials();
-        $this->registerOAuthCredentials();
+//        $this->registerOAuthCredentials();
         $this->registerUrlProvider();
         $this->registerAuthProvider();
     }
@@ -55,7 +55,8 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
                 $app['config']->get('laradit.client_id'),
                 $app['config']->get('laradit.client_secret'),
                 $app['config']->get('laradit.reddit_username'),
-                $app['config']->get('laradit.reddit_password')
+                $app['config']->get('laradit.reddit_password'),
+                $app['config']->get('laradit.user_agent')
             );
         });
     }
