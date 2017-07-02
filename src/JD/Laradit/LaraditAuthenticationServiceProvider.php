@@ -36,7 +36,7 @@ class LaraditAuthenticationServiceProvider extends ServiceProvider {
     {
         $this->registerAliases();
         $this->registerCredentials();
-//        $this->registerOAuthCredentials();
+        $this->registerOAuthCredentials();
         $this->registerUrlProvider();
         $this->registerAuthProvider();
     }
