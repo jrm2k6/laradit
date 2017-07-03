@@ -24,6 +24,9 @@ class ScriptAuth
                     'grant_type' => 'password',
                     'username' => $this->credentials->getClientUsername(),
                     'password' => $this->credentials->getClientPassword()
+                ],
+                'headers' => [
+                    'User-Agent' => $this->credentials->getUserAgent()
                 ]
             ]);
 

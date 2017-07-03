@@ -6,6 +6,6 @@ return [
   'oauth_redirect_uri' => env('LARADIT_OAUTH_REDIRECT_URI'),
   'user_agent' => env('LARADIT_USER_AGENT', 'laradit'),
   'reddit_username' => env('LARADIT_REDDIT_USERNAME'),
-  'reddit_password' => ENV('LARADIT_REDDIT_PASSWORD'),
-  'type_script' => ENV('LARADIT_TYPE_SCRIPT')
+  'reddit_password' => env('LARADIT_REDDIT_PASSWORD'),
+  'type_script' => env('LARADIT_TYPE_SCRIPT')
 ];
